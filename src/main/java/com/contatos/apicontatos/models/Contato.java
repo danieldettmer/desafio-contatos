@@ -9,6 +9,9 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
@@ -29,6 +32,16 @@ public class Contato implements Serializable{
 	
 	@NotNull
 	private String nome;
+	
+	//Categoria Criar pesquisa por filtro, rota categoria
+	private String categoria;
+	// Grupos many to many avaliar
+	
+//	@ManyToMany
+//	@JoinTable(name="grupos_contatos",joinColumns = 
+//		{@JoinColumn(name="contato_id")}, inverseJoinColumns =
+//			{@JoinColumn(name="grupo_id")})
+//	private List<Grupo> grupos;
 	
 	@NotNull
 //	private String telefone;
@@ -59,19 +72,26 @@ public class Contato implements Serializable{
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	
-	public Telefone addTelefone(Telefone telefone) {
-		getTelefones().add(telefone);
-		telefone.setContato(this);
-		
-		return telefone;
-	}
-	
-	public void removeTelefone(Telefone telefone) {
-		getTelefones().remove(telefone);
-		telefone.setContato(null);
+
+	public String getCategoria() {
+		return categoria;
 	}
 
+	public void setCategoria(String categoria) {
+		this.categoria = categoria;
+	}
+
+//	public List<Grupo> getGrupos() {
+//		return grupos;
+//	}
+//
+//	public void setGrupos(List<Grupo> grupos) {
+//		this.grupos = grupos;
+//	}
+
+	
+	
+	
 	/*
 	 * public String getTelefone() { return telefone; }
 	 * 

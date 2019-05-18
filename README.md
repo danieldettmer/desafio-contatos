@@ -75,6 +75,7 @@ Lista todos os Contatos com e sem telefone.
     {
         "id": 1,
         "nome": "xd asd",
+        "categoria": null,
         "telefones": [
             {
                 "id": 2,
@@ -86,11 +87,13 @@ Lista todos os Contatos com e sem telefone.
     {
         "id": 4,
         "nome": "xddd",
+        "categoria": "aaaa",
         "telefones": []
     },
     {
         "id": 5,
         "nome": "xddd dsajkdoalks",
+        "categoria": "bbbb",
         "telefones": []
     }
 ]
@@ -381,3 +384,176 @@ Content-Type        application/json
     ]
 }
 ```
+---
+## Categoria
+---
+### List
+```
+Lista os contatos de uma categoria, o paramentro order aceita os valores "asc" ou "desc"
+```
+##### GET http://localhost:8080/api/contatos/categoria/bb?order=desc
+##### Headers  
+```
+KEY                 VALUE
+order               asc||desc
+```
+
+##### Return
+```
+[
+    {
+        "id": 4,
+        "nome": "xd",
+        "categoria": "bbbb",
+        "telefones": [
+            {
+                "id": 9,
+                "numero": "8888",
+                "contato": 4
+            }
+        ]
+    },
+    {
+        "id": 6,
+        "nome": "xd",
+        "categoria": "aabb",
+        "telefones": [
+            {
+                "id": 7,
+                "numero": "963",
+                "contato": 6
+            },
+            {
+                "id": 8,
+                "numero": "963999",
+   ```
+---
+## Grupo
+---
+### List
+```
+Lista os grupo de usuario
+```
+##### GET http://localhost:8080/api/grupos
+##### Return
+```
+[
+    {
+        "id": 8,
+        "nome": "teste qweqw",
+        "admnistrador": null,
+        "contatos": []
+    },
+    {
+        "id": 9,
+        "nome": "teste qweqw",
+        "admnistrador": null,
+        "contatos": [
+            {
+                "id": 4,
+                "nome": "xdd",
+                "categoria": null,
+                "telefones": []
+            }
+        ]
+    }
+]
+```
+---
+### Read
+```
+Lista os grupo de usuario
+```
+##### GET http://localhost:8080/api/grupo/8
+##### Return
+```
+[
+    {
+        "id": 8,
+        "nome": "teste qweqw",
+        "admnistrador": null,
+        "contatos": []
+    }
+]
+```
+---
+### Create
+```
+Cria um grupo
+```
+##### POST http://localhost:8080/api/grupo
+##### Headers  
+```
+KEY                 VALUE
+Content-Type        application/json
+```
+##### Body
+```
+{
+    "nome": "teste qweqw",
+    "admnistrador": null
+}
+```
+##### Return
+```
+{
+    "id": 12,
+    "nome": "teste qweqw",
+    "admnistrador": null,
+    "contatos": null
+}
+```
+---
+---
+### Update
+```
+Atualiza um grupo e pode adicionar um usuario ao grupo, se o campo contatos for vazio só vai editar o grupo, se tiver valor adiciona o usuario ao grupo.
+```
+##### PUT http://localhost:8080/api/grupo
+##### Headers  
+```
+KEY                 VALUE
+Content-Type        application/json
+```
+##### Body
+```
+{
+    "id": 12,
+        "nome": "testeqewqwe",
+        "admnistrador": null,
+        "contatos": [
+      {
+        "id": 4,
+        "nome": "xdd",
+          "telefones":[]
+      } 
+        ]
+}
+```
+##### Return
+```
+{
+    "id": 12,
+    "nome": "testeqewqwe",
+    "admnistrador": null,
+    "contatos": [
+        {
+            "id": 4,
+            "nome": "xdd",
+            "categoria": null,
+            "telefones": []
+        }
+    ]
+}
+```
+---
+### Delete
+```
+Apaga um grupo pelo id
+```
+##### DELETE http://localhost:8080/api/grupo/2
+##### Return Void
+```
+HTTP/1.1 200 Ok
+```
+---

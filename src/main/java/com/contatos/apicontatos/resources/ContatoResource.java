@@ -3,6 +3,7 @@ package com.contatos.apicontatos.resources;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -43,6 +44,16 @@ public class ContatoResource {
 	@GetMapping("/contatos/{nome}")
 	public List<Contato> listaContato(@PathVariable(value="nome") String nome){
 		return contatoRepository.findByName(nome);
+	}
+	
+	//List contact by name
+	@GetMapping("/contatos/categoria/{categoria}")
+	public List<Contato> listaContatosCategoria(@PathVariable(value="categoria") String categoria, @RequestParam String order){
+		if(order.equalsIgnoreCase("desc")) {
+			return contatoRepository.findByCategoryOrderByCategoriaDesc(categoria);
+		} else {
+			return contatoRepository.findByCategoryOrderByCategoriaAsc(categoria);
+		}
 	}
 	
 	//Create contact with or without telephone 
