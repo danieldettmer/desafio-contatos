@@ -47,8 +47,6 @@ Se você for aprovado nesta etapa, será convidado para uma entrevista final com
 ---
 # ContactsAPI
 ---
-#
-#
 ## Contatos
 ---
 ### List
@@ -57,10 +55,9 @@ Lista todos os Contatos com e sem telefone.
 ```
 ---
 ##### GET http://localhost:8080/api/contatos
-#
+
 ##### Return
-#
-#
+
 ```
 [
     {
@@ -93,10 +90,7 @@ Lista um contato específico através do id
 ```
 ---
 ##### GET http://localhost:8080/api/contato/1
-#
 ##### Return
-#
-#
 ```
 {
     "id": 1,
@@ -117,10 +111,7 @@ Lista todos os Contatos através do nome.
 ```
 ---
 ##### GET http://localhost:8080/api/contatos/xd
-#
 ##### Return
-#
-#
 ```
 [
     {
@@ -152,10 +143,7 @@ Lista todos os Contatos através do nome.
 Apaga um contato pelo id
 ```
 ##### DELETE http://localhost:8080/api/contato/telefone/4
-#
 ##### Return Void
-#
-# 
 ```
 HTTP/1.1 200 Ok
 ```
@@ -165,17 +153,12 @@ HTTP/1.1 200 Ok
 Cria um contato sem telefone.
 ```
 ##### POST http://localhost:8080/api/contato
-#
 ##### Headers  
-#
-#
 ```
 KEY                 VALUE
 Content-Type        application/json
 ```
 ##### Body
-#
-#
 ```
 {
     "nome": "xddd dsajkdoalks",
@@ -183,8 +166,6 @@ Content-Type        application/json
 }
 ```
 ##### Return
-#
-#
 ```
 {
     "id": 5,
@@ -199,17 +180,12 @@ Cria um contato com telefone.
 // Os campos id e contatos, devem possuir o mesmo valor, para referenciar o telefone ao contato.
 ```
 ##### POST http://localhost:8080/api/contato
-#
 ##### Headers  
-#
-#
 ```
 KEY                 VALUE
 Content-Type        application/json
 ```
 ##### Body
-#
-#
 ```
 {
   "id":6,
@@ -224,8 +200,6 @@ Content-Type        application/json
 }
 ```
 ##### Return
-#
-#
 ```
 {
     "id": 6,
@@ -245,17 +219,12 @@ Content-Type        application/json
 Atualiza um contato, com ou sem telefone
 ```
 ##### PUT http://localhost:8080/api/contato/
-#
 ##### Headers  
-#
-#
 ```
 KEY                 VALUE
 Content-Type        application/json
 ```
 ##### Body
-#
-#
 ```
 {
   "id": 1,
@@ -264,8 +233,6 @@ Content-Type        application/json
 }
 ```
 ##### Return
-#
-#
 ```
 {
     "id": 1,
@@ -279,17 +246,12 @@ Content-Type        application/json
 Atualiza um contato, com ou sem telefone, caso nao exista o telefone é criado.
 ```
 ##### PUT http://localhost:8080/api/contato/
-#
 ##### Headers  
-#
-#
 ```
 KEY                 VALUE
 Content-Type        application/json
 ```
 ##### Body
-#
-#
 ```
 {
   "id": 4,
@@ -303,8 +265,6 @@ Content-Type        application/json
 }
 ```
 ##### Return
-#
-#
 ```
 {
     "id": 4,
@@ -318,8 +278,6 @@ Content-Type        application/json
     ]
 }
 ```
-#
-#
 ## Telefone
 ---
 
@@ -328,10 +286,7 @@ Content-Type        application/json
 Apaga um telefone pelo id
 ```
 ##### DELETE http://localhost:8080/api/contato/telefone/9
-#
 ##### Return Void
-#
-# 
 ```
 HTTP/1.1 200 Ok
 ```
@@ -342,17 +297,12 @@ Cria um telefone.
 // Os campos id e contatos, devem possuir o mesmo valor, para referenciar o telefone ao contato.
 ```
 ##### POST http://localhost:8080/api/contato/telefone
-#
 ##### Headers  
-#
-#
 ```
 KEY                 VALUE
 Content-Type        application/json
 ```
 ##### Body
-#
-#
 ```
 {
   "id":1,
@@ -367,8 +317,6 @@ Content-Type        application/json
 }
 ```
 ##### Return
-#
-#
 ```
 {
     "id": 1,
@@ -388,17 +336,12 @@ Content-Type        application/json
 Atualiza telefone
 ```
 ##### PUT http://localhost:8080/api/contato/
-#
 ##### Headers  
-#
-#
 ```
 KEY                 VALUE
 Content-Type        application/json
 ```
 ##### Body
-#
-#
 ```
 {
   "id": 1,
@@ -413,8 +356,6 @@ Content-Type        application/json
 }
 ```
 ##### Return
-#
-#
 ```
 {
     "id": 1,
