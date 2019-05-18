@@ -47,6 +47,18 @@ Se você for aprovado nesta etapa, será convidado para uma entrevista final com
 ---
 # ContactsAPI
 ---
+### Config DB
+---
+##### application.properties
+Criar um banco com o nome agenda, e configurar o arquivo "application.properties" com os dados do usuario do banco
+```
+#banco_local
+spring.datasource.url=jdbc:mysql://127.0.0.1:3306/agenda?serverTimezone=UTC&useLegacyDatetimeCode=false
+spring.datasource.username=root
+#spring.datasource.password=123456
+spring.jpa.hibernate.ddl-auto=upd
+```
+---
 ## Contatos
 ---
 ### List
