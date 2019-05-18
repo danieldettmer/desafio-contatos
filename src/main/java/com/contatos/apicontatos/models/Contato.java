@@ -33,9 +33,7 @@ public class Contato implements Serializable{
 	@NotNull
 	private String nome;
 	
-	//Categoria Criar pesquisa por filtro, rota categoria
 	private String categoria;
-	// Grupos many to many avaliar
 	
 //	@ManyToMany
 //	@JoinTable(name="grupos_contatos",joinColumns = 
@@ -43,14 +41,20 @@ public class Contato implements Serializable{
 //			{@JoinColumn(name="grupo_id")})
 //	private List<Grupo> grupos;
 	
-	@NotNull
-//	private String telefone;
-	
 	@OneToMany(mappedBy = "contato", targetEntity = Telefone.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Telefone> telefones;
 	
 	public List<Telefone> getTelefones() {
 		return telefones;
+	}
+
+	public Contato() {}
+	
+
+	public Contato(@NotNull String nome, String categoria, List<Telefone> telefones) {
+		this.nome = nome;
+		this.categoria = categoria;
+		this.telefones = telefones;
 	}
 
 	public void setTelefones(List<Telefone> telefones) {
@@ -81,21 +85,5 @@ public class Contato implements Serializable{
 		this.categoria = categoria;
 	}
 
-//	public List<Grupo> getGrupos() {
-//		return grupos;
-//	}
-//
-//	public void setGrupos(List<Grupo> grupos) {
-//		this.grupos = grupos;
-//	}
-
-	
-	
-	
-	/*
-	 * public String getTelefone() { return telefone; }
-	 * 
-	 * public void setTelefone(String telefone) { this.telefone = telefone; }
-	 */
 
 }

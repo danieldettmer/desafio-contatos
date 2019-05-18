@@ -18,7 +18,6 @@ public interface ContatoRepository extends JpaRepository<Contato, Long>{
 	List<Contato> findByCategoryOrderByCategoriaAsc(String categoria);
 	
 	@Query("select c from CONTATO c where c.categoria LIKE %?1% order by c.categoria DESC")
-	List<Contato> findByCategoryOrderByCategoriaDesc(String categoria);
-	
+	List<Contato> findByCategoryOrderByCategoriaDesc(String categoria);	
 
 }

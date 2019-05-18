@@ -50,13 +50,18 @@ Se você for aprovado nesta etapa, será convidado para uma entrevista final com
 ### Config DB
 ---
 ##### application.properties
-Criar um banco com o nome agenda, e configurar o arquivo "application.properties" com os dados do usuario do banco
+É preciso criar um banco com o nome agenda, e configurar o arquivo "application.properties" com os dados do usuario do banco, em seguida é preciso executar a aplicação, para que as tabelas seja criadas, e por fim fazer uma requisição GET "http://localhost:8080/api/base" para popular o banco com alguns registros.
 ```
 #banco_local
 spring.datasource.url=jdbc:mysql://127.0.0.1:3306/agenda?serverTimezone=UTC&useLegacyDatetimeCode=false
 spring.datasource.username=root
 #spring.datasource.password=123456
 spring.jpa.hibernate.ddl-auto=upd
+```
+##### GET http://localhost:8080/api/base
+##### Return void
+```
+HTTP/1.1 200 Ok
 ```
 ---
 ## Contatos

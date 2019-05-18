@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.contatos.apicontatos.models.Contato;
-import com.contatos.apicontatos.models.Telefone;
+
 import com.contatos.apicontatos.repository.ContatoRepository;
 import com.contatos.apicontatos.repository.TelefoneRepository;
 

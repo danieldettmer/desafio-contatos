@@ -32,6 +32,12 @@ private static final long serialVersionUID = 1L;
 	@JoinColumn(name="contato_id")
 	private Contato contato;
 
+	public Telefone() {}
+	public Telefone(String numero, Contato contato) {
+		this.numero = numero;
+		this.contato = contato;
+	}
+
 	public long getId() {
 		return id;
 	}

@@ -28,16 +28,22 @@ public class Grupo implements Serializable{
 	
 	private String nome;
 	
+	//implementacao futura
 	private String admnistrador;
 	
-//	@ManyToMany(mappedBy = "grupos")
 	@ManyToMany
 	@JoinTable(name="grupos_contatos",joinColumns = 
 		{@JoinColumn(name="grupo_id")}, inverseJoinColumns =
 			{@JoinColumn(name="contato_id")})
 	private List<Contato> contatos;
-
 	
+	public Grupo() {}
+	public Grupo(String nome, String admnistrador, List<Contato> contatos) {
+		this.nome = nome;
+		this.admnistrador = admnistrador;
+		this.contatos = contatos;
+	}
+
 	public long getId() {
 		return id;
 	}

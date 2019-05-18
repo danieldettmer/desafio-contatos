@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.RestController;
 
-import com.contatos.apicontatos.models.Contato;
 import com.contatos.apicontatos.models.Grupo;
 
 import com.contatos.apicontatos.repository.GrupoRepository;
