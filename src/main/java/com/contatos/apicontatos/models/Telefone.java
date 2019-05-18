@@ -15,9 +15,9 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
-@Entity
+@Entity(name="TELEFONE")
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,property = "id")
-@Table(name="TB_TELEFONE")
+@Table(name="TELEFONE")
 public class Telefone  implements Serializable{
 	
 private static final long serialVersionUID = 1L;
@@ -28,7 +28,7 @@ private static final long serialVersionUID = 1L;
 	
 	private String numero;
 
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="contato_id")
 	private Contato contato;
 
@@ -55,6 +55,9 @@ private static final long serialVersionUID = 1L;
 	public void setContato(Contato contato) {
 		this.contato = contato;
 	}
+
+	
+	
 	
 	
 }

@@ -27,46 +27,67 @@ public class ContatoResource {
 	@Autowired
 	TelefoneRepository telefoneRepository;
 	
+	//List all contacts
 	@GetMapping("/contatos")
 	public List<Contato> listaContatos(){
 		return contatoRepository.findAll();
 	}
 	
+	//List contact by id
 	@GetMapping("/contato/{id}")
 	public Contato listaContato(@PathVariable(value="id") long id){
 		return contatoRepository.findById(id);
 	}
 	
+	//List contact by name
+	@GetMapping("/contatos/{nome}")
+	public List<Contato> listaContato(@PathVariable(value="nome") String nome){
+		return contatoRepository.findByName(nome);
+	}
+	
+	//Create contact with or without telephone 
 	@PostMapping("/contato")
 	public Contato salvaContato(@RequestBody Contato contato) {
 		return contatoRepository.save(contato);
 	}
 	
 	@PostMapping("/contato/telefone")
-//	public void action(@RequestParam(value = "param[]") String[] paramValues){
-//		System.out.println(paramValues);
-//	}
-	public Contato salvaTelefoneContato(@RequestBody Contato contato) {
-//		System.out.println(contato);
-		return contato;
-//		return telefoneRepository.save(contato);
+	public Contato salvaTelefone(@RequestBody Contato contato) {
+		return contatoRepository.save(contato);
 	}
 	
+	//Delete contact by id
 	@DeleteMapping("/contato/{id}")
 	public void apagaContato(@PathVariable(value="id") long id){
 		contatoRepository.deleteById(id);
 	}
 	
+	//Delete telephone by id
+	@DeleteMapping("/contato/telefone/{id}")
+	public void apagaTelefone(@PathVariable(value="id") long id){
+		telefoneRepository.deleteById(id);
+	}
+	
+	//Update contact || (contact and telephone) || (telephone)
+	@PutMapping("/contato")
+	public Contato atualizaContato(@RequestBody Contato contato) {
+		return contatoRepository.save(contato);
+	}
+	
+	//Update contact || (contact and telephone) || (telephone)
+	@PutMapping("/contato/telefone")
+	public Contato atualizaContatoTelefone(@RequestBody Contato contato) {
+		return contatoRepository.save(contato);
+	}
+	
+	
 	/*
-	 *Delete 2
+	 *Delete by obj
 	@DeleteMapping("/contato")
 	public void apagaContato(@RequestBody Contato contato) {
 		contatoRepository.delete(contato);
 	}
 	*/
 	
-	@PutMapping("/contato")
-	public Contato atualizaContato(@RequestBody Contato contato) {
-		return contatoRepository.save(contato);
-	}
+	
 }

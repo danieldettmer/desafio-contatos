@@ -16,9 +16,9 @@ import javax.validation.constraints.NotNull;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
-@Entity
+@Entity(name="CONTATO")
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,property = "id")
-@Table(name="TB_CONTATO")
+@Table(name="CONTATO")
 public class Contato implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
@@ -58,6 +58,18 @@ public class Contato implements Serializable{
 
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+	
+	public Telefone addTelefone(Telefone telefone) {
+		getTelefones().add(telefone);
+		telefone.setContato(this);
+		
+		return telefone;
+	}
+	
+	public void removeTelefone(Telefone telefone) {
+		getTelefones().remove(telefone);
+		telefone.setContato(null);
 	}
 
 	/*

@@ -42,3 +42,389 @@ Se você for aprovado nesta etapa, será convidado para uma entrevista final com
       4. Crie um arquivo de texto com a nomenclatura README.MD com a explicação de como devemos executar o 
         projeto e com uma descrição do que foi feito; 
       5. Solicite o Merge request para o repositório original e que a força esteja com você.
+---
+---
+---
+# ContactsAPI
+---
+#
+#
+## Contatos
+---
+### List
+```
+Lista todos os Contatos com e sem telefone.
+```
+---
+##### GET http://localhost:8080/api/contatos
+#
+##### Return
+#
+#
+```
+[
+    {
+        "id": 1,
+        "nome": "xd asd",
+        "telefones": [
+            {
+                "id": 2,
+                "numero": "963",
+                "contato": 1
+            }
+        ]
+    },
+    {
+        "id": 4,
+        "nome": "xddd",
+        "telefones": []
+    },
+    {
+        "id": 5,
+        "nome": "xddd dsajkdoalks",
+        "telefones": []
+    }
+]
+```
+---
+### Read
+```
+Lista um contato específico através do id
+```
+---
+##### GET http://localhost:8080/api/contato/1
+#
+##### Return
+#
+#
+```
+{
+    "id": 1,
+    "nome": "xd asd",
+    "telefones": [
+        {
+            "id": 2,
+            "numero": "963",
+            "contato": 1
+        }
+    ]
+}
+```
+---
+### List
+```
+Lista todos os Contatos através do nome.
+```
+---
+##### GET http://localhost:8080/api/contatos/xd
+#
+##### Return
+#
+#
+```
+[
+    {
+        "id": 1,
+        "nome": "xd asd",
+        "telefones": [
+            {
+                "id": 2,
+                "numero": "963",
+                "contato": 1
+            }
+        ]
+    },
+    {
+        "id": 4,
+        "nome": "xddd",
+        "telefones": []
+    },
+    {
+        "id": 5,
+        "nome": "xddd dsajkdoalks",
+        "telefones": []
+    }
+]
+```
+---
+### Delete
+```
+Apaga um contato pelo id
+```
+##### DELETE http://localhost:8080/api/contato/telefone/4
+#
+##### Return Void
+#
+# 
+```
+HTTP/1.1 200 Ok
+```
+---
+### Create
+```
+Cria um contato sem telefone.
+```
+##### POST http://localhost:8080/api/contato
+#
+##### Headers  
+#
+#
+```
+KEY                 VALUE
+Content-Type        application/json
+```
+##### Body
+#
+#
+```
+{
+    "nome": "xddd dsajkdoalks",
+    "telefones":[]
+}
+```
+##### Return
+#
+#
+```
+{
+    "id": 5,
+    "nome": "xddd dsajkdoalks",
+    "telefones": []
+}
+```
+---
+### Create
+```
+Cria um contato com telefone. 
+// Os campos id e contatos, devem possuir o mesmo valor, para referenciar o telefone ao contato.
+```
+##### POST http://localhost:8080/api/contato
+#
+##### Headers  
+#
+#
+```
+KEY                 VALUE
+Content-Type        application/json
+```
+##### Body
+#
+#
+```
+{
+  "id":6,
+    "nome": "xd",
+    "telefones":[
+      {
+        "numero":"963",
+        "contato":6
+      }
+    ]
+        
+}
+```
+##### Return
+#
+#
+```
+{
+    "id": 6,
+    "nome": "xd",
+    "telefones": [
+        {
+            "id": 7,
+            "numero": "963",
+            "contato": 6
+        }
+    ]
+}
+```
+---
+### Update
+```
+Atualiza um contato, com ou sem telefone
+```
+##### PUT http://localhost:8080/api/contato/
+#
+##### Headers  
+#
+#
+```
+KEY                 VALUE
+Content-Type        application/json
+```
+##### Body
+#
+#
+```
+{
+  "id": 1,
+    "nome": "xd asd",
+    "telefones":[]
+}
+```
+##### Return
+#
+#
+```
+{
+    "id": 1,
+    "nome": "xd asd qwe",
+    "telefones": []
+}
+```
+---
+### Update
+```
+Atualiza um contato, com ou sem telefone, caso nao exista o telefone é criado.
+```
+##### PUT http://localhost:8080/api/contato/
+#
+##### Headers  
+#
+#
+```
+KEY                 VALUE
+Content-Type        application/json
+```
+##### Body
+#
+#
+```
+{
+  "id": 4,
+    "nome": "xd",
+    "telefones":[
+      {
+        "numero":"8888",
+        "contato":4
+      }
+    ]
+}
+```
+##### Return
+#
+#
+```
+{
+    "id": 4,
+    "nome": "xd",
+    "telefones": [
+        {
+            "id": 9,
+            "numero": "8888",
+            "contato": 4
+        }
+    ]
+}
+```
+#
+#
+## Telefone
+---
+
+### Delete
+```
+Apaga um telefone pelo id
+```
+##### DELETE http://localhost:8080/api/contato/telefone/9
+#
+##### Return Void
+#
+# 
+```
+HTTP/1.1 200 Ok
+```
+---
+### Create
+```
+Cria um telefone. 
+// Os campos id e contatos, devem possuir o mesmo valor, para referenciar o telefone ao contato.
+```
+##### POST http://localhost:8080/api/contato/telefone
+#
+##### Headers  
+#
+#
+```
+KEY                 VALUE
+Content-Type        application/json
+```
+##### Body
+#
+#
+```
+{
+  "id":1,
+    "nome": "xd",
+    "telefones":[
+      {
+        "numero":"96399900",
+        "contato":1
+      }
+    ]
+        
+}
+```
+##### Return
+#
+#
+```
+{
+    "id": 1,
+    "nome": "xd",
+    "telefones": [
+        {
+            "id": 14,
+            "numero": "96399900",
+            "contato": 1
+        }
+    ]
+}
+```
+---
+### Update
+```
+Atualiza telefone
+```
+##### PUT http://localhost:8080/api/contato/
+#
+##### Headers  
+#
+#
+```
+KEY                 VALUE
+Content-Type        application/json
+```
+##### Body
+#
+#
+```
+{
+  "id": 1,
+    "nome": "xd",
+    "telefones":[
+      {
+        "id":14,
+        "numero":"4567123",
+        "contato":1
+      }
+    ]
+}
+```
+##### Return
+#
+#
+```
+{
+    "id": 1,
+    "nome": "xd",
+    "telefones": [
+        {
+            "id": 14,
+            "numero": "4567123",
+            "contato": 1
+        }
+    ]
+}
+```
