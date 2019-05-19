@@ -11,6 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
@@ -26,9 +27,11 @@ public class Grupo implements Serializable{
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long id;
 	
+	@Size(min=3)
 	private String nome;
 	
 	//implementacao futura
+	@Size(min=3)
 	private String admnistrador;
 	
 	@ManyToMany

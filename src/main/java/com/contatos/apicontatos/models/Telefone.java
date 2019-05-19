@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
@@ -26,6 +27,7 @@ private static final long serialVersionUID = 1L;
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long id;
 	
+	@Size(min=3)
 	private String numero;
 
 	@ManyToOne(fetch = FetchType.LAZY)
