@@ -61,7 +61,7 @@ public class ContatoResource {
 		return contatoRepository.save(contato);
 	}
 	
-	//telefones
+	//telefone
 	
 	@DeleteMapping("/contato/telefone/{id}")
 	public void deletaTelefonePorId(@PathVariable(value="id") long id) {
@@ -70,4 +70,10 @@ public class ContatoResource {
 		telefoneRepository.deleteById(telefone.getId());
 	}
 	
+	//categoria
+	
+	@GetMapping("/contatos/categoria/{categoria}")
+	public List<Contato> listaContatosPorCategoria(@PathVariable(value="categoria") String categoria){
+		return contatoRepository.findByCategoria(categoria);
+	}
 }

@@ -14,5 +14,8 @@ public interface ContatoRepository extends JpaRepository<Contato,Long> {
 	@Query("select c from CONTATO c where c.nome LIKE %?1%")
 	List<Contato> findByName(String nome);
 	
+	@Query("select c from CONTATO c where c.categoria LIKE %?1%")
+	List<Contato> findByCategoria(String categoria);
+	
 	Contato deleteById(long id);
 }

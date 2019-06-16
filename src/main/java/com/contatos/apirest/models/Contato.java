@@ -30,13 +30,16 @@ public class Contato implements Serializable{
 	@NotNull
 	private String nome;
 	
+	private String categoria;
+	
 	@OneToMany(mappedBy="contato", targetEntity=Telefone.class, fetch=FetchType.LAZY, cascade=CascadeType.ALL)
 	private List<Telefone> telefones;
 	
     public Contato() {}
 	
-	public Contato(@NotNull String nome, List<Telefone> telefones) {
+	public Contato(@NotNull String nome, String categoria, List<Telefone> telefones) {
 		this.nome = nome;
+		this.categoria = categoria;
 		this.telefones = telefones;
 	}
 
@@ -62,5 +65,13 @@ public class Contato implements Serializable{
 
 	public void setTelefones(List<Telefone> telefones) {
 		this.telefones = telefones;
+	}
+
+	public String getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(String categoria) {
+		this.categoria = categoria;
 	}
 }
