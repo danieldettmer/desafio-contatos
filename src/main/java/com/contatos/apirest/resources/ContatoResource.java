@@ -32,6 +32,11 @@ public class ContatoResource {
 		return contatoRepository.findById(id);
 	}
 	
+	@GetMapping("/contatos/{nome}")
+	public List<Contato> listaContatosPorNome(@PathVariable(value="nome") String nome){
+		return contatoRepository.findByName(nome);
+	}
+	
 	@PostMapping("/contato")
 	public Contato salvaContato(@RequestBody Contato contato) {
 		return contatoRepository.save(contato);

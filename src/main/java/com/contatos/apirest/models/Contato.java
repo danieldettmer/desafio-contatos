@@ -1,22 +1,44 @@
 package com.contatos.apirest.models;
 
 import java.io.Serializable;
-import java.math.BigInteger;
+import java.util.List;
 
-import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
-@Entity
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
+@Entity(name="CONTATO")
 @Table(name="CONTATO")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,property = "id")
 public class Contato implements Serializable{
+	
 	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long id;
 	
+	@NotNull
 	private String nome;
 	
-	private BigInteger telefone;
+	@OneToMany(mappedBy="contato", targetEntity=Telefone.class, fetch=FetchType.LAZY, cascade=CascadeType.ALL)
+	private List<Telefone> telefones;
+	
+    public Contato() {}
+	
+	public Contato(@NotNull String nome, List<Telefone> telefones) {
+		this.nome = nome;
+		this.telefones = telefones;
+	}
 
 	public long getId() {
 		return id;
@@ -34,12 +56,11 @@ public class Contato implements Serializable{
 		this.nome = nome;
 	}
 
-	public BigInteger getTelefone() {
-		return telefone;
+	public List<Telefone> getTelefones() {
+		return telefones;
 	}
 
-	public void setTelefone(BigInteger telefone) {
-		this.telefone = telefone;
+	public void setTelefones(List<Telefone> telefones) {
+		this.telefones = telefones;
 	}
-	
 }
