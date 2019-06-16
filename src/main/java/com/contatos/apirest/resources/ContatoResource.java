@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.contatos.apirest.models.Contato;
+import com.contatos.apirest.models.Telefone;
 import com.contatos.apirest.repository.ContatoRepository;
+import com.contatos.apirest.repository.TelefoneRepository;
 
 @RestController
 @RequestMapping(value="api")
@@ -21,6 +23,11 @@ public class ContatoResource {
 	
 	@Autowired
 	ContatoRepository contatoRepository;
+	
+	@Autowired
+	TelefoneRepository telefoneRepository;
+	
+	//contatos
 	
 	@GetMapping("/contatos")
 	public List<Contato> listaContatos(){
@@ -52,6 +59,15 @@ public class ContatoResource {
 	@PutMapping("/contato")
 	public Contato atualizaContato(@RequestBody Contato contato) {
 		return contatoRepository.save(contato);
+	}
+	
+	//telefones
+	
+	@DeleteMapping("/contato/telefone/{id}")
+	public void deletaTelefonePorId(@PathVariable(value="id") long id) {
+		Telefone telefone = telefoneRepository.findById(id);
+		
+		telefoneRepository.deleteById(telefone.getId());
 	}
 	
 }
