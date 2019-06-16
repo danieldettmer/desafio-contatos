@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Tempo de geração: 16/06/2019 às 22:56
+-- Tempo de geração: 16/06/2019 às 23:34
 -- Versão do servidor: 10.1.38-MariaDB
 -- Versão do PHP: 7.3.4
 
@@ -61,7 +61,7 @@ CREATE TABLE `grupo` (
 
 INSERT INTO `grupo` (`id`, `descricao`, `nome`) VALUES
 (6, 'Grupo de colegas de trabalho', 'Trabalho'),
-(7, 'Grupo da família', 'Família');
+(11, 'Grupo da família', 'Família');
 
 -- --------------------------------------------------------
 
@@ -81,8 +81,7 @@ CREATE TABLE `grupos_contatos` (
 INSERT INTO `grupos_contatos` (`grupo_id`, `contato_id`) VALUES
 (6, 1),
 (6, 2),
-(7, 1),
-(7, 2);
+(11, 3);
 
 -- --------------------------------------------------------
 
@@ -99,9 +98,9 @@ CREATE TABLE `hibernate_sequence` (
 --
 
 INSERT INTO `hibernate_sequence` (`next_val`) VALUES
-(8),
-(8),
-(8);
+(12),
+(12),
+(12);
 
 -- --------------------------------------------------------
 
