@@ -28,18 +28,22 @@ public class ContatoController {
     }
 
     @GetMapping("/contatos/{id}")
-    public Contato buscarContatoId(@PathVariable(value="id") Long id) {
-        return cRepository.findById(id).get();
+    public ResponseEntity<?> buscarContatoId(@PathVariable(value="id") Long id) {
+        return cRepository.findById(id)
+                .map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
 
     @PutMapping("/contatos/{id}")
-    public Contato atualizarContato(@PathVariable(value="id") Long id,
-                                   @RequestBody Contato contato) {
-        Contato c = cRepository.findById(id).get();
-        c.setNome(contato.getNome());
-        c.setEmail(contato.getEmail());
-        c.setTelefones(contato.getTelefones());
-        return cRepository.save(c);
+    public ResponseEntity<?> atualizarContato(
+            @PathVariable(value="id") Long id,
+            @RequestBody Contato contato) {
+        return cRepository.findById(id)
+                .map(c -> {
+                    c.setNome(contato.getNome());
+                    c.setEmail(contato.getEmail());
+                    c.setTelefones(contato.getTelefones());
+                    return ResponseEntity.ok(cRepository.save(c));
+                }).orElse( ResponseEntity.notFound().build());
     }
 
     @DeleteMapping("/contatos/{id}")
