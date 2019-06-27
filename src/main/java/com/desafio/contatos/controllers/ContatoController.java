@@ -30,7 +30,7 @@ public class ContatoController {
     @GetMapping("/contatos/{id}")
     public ResponseEntity<?> buscarContatoId(@PathVariable(value="id") Long id) {
         return cRepository.findById(id)
-                .map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
+                .map(ResponseEntity::ok).orElse( ResponseEntity.notFound().build());
     }
 
     @PutMapping("/contatos/{id}")
@@ -41,7 +41,6 @@ public class ContatoController {
                 .map(c -> {
                     c.setNome(contato.getNome());
                     c.setEmail(contato.getEmail());
-                    c.setTelefones(contato.getTelefones());
                     return ResponseEntity.ok(cRepository.save(c));
                 }).orElse( ResponseEntity.notFound().build());
     }
@@ -54,7 +53,6 @@ public class ContatoController {
                     return ResponseEntity.ok().build();
                 }).orElse(ResponseEntity.notFound().build());
     }
-
 
     @GetMapping("/contatos/buscar")
     public List<Contato> buscarContatoFiltros(

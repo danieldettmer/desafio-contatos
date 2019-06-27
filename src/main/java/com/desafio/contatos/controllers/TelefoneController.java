@@ -27,8 +27,9 @@ public class TelefoneController {
     }
 
     @PostMapping("/contatos/{id}/telefones")
-    public List<Telefone> criarTelefoneContato(@PathVariable(value="id") Long id,
-                                        @RequestBody List<Telefone> telefones) {
+    public List<Telefone> criarTelefoneContato(
+            @PathVariable(value="id") Long id,
+            @RequestBody List<Telefone> telefones) {
         Contato c = cRepository.findById(id).get();
         telefones.forEach(t -> t.setContato(c));
         return tRepository.saveAll(telefones);
@@ -61,6 +62,5 @@ public class TelefoneController {
                     return ResponseEntity.ok().build();
                 }).orElse(ResponseEntity.notFound().build());
     }
-
 
 }

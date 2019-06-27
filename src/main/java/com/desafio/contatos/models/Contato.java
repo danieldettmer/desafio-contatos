@@ -1,5 +1,6 @@
 package com.desafio.contatos.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -26,8 +27,14 @@ public class Contato implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date dataNascimento;
 
-    @OneToMany(mappedBy = "contato", cascade = CascadeType.ALL)
-    @JsonManagedReference
+    @OneToMany(mappedBy = "contato", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference(value = "contato")
     private List<Telefone> telefones;
+
+    @ManyToMany
+    @JoinTable(name = "contatos_grupos",
+            joinColumns = @JoinColumn(name = "contato_id"),
+            inverseJoinColumns = @JoinColumn(name = "grupo_id"))
+    private List<Grupo> grupos;
 
 }

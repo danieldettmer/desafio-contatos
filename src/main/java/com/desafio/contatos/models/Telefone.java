@@ -23,9 +23,13 @@ public class Telefone implements Serializable {
     @NotNull
     private String numero;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="contato_id")
-    @JsonBackReference
+    @JsonBackReference(value = "contato")
     private Contato contato;
+
+    @ManyToOne
+    @JoinColumn(name="categoria_id")
+    private Categoria categoria;
 
 }
