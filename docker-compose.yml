@@ -1,0 +1,20 @@
+version: '3'
+services:
+  db:
+    image: "mysql:latest"
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: database
+      MYSQL_USER: main
+      MYSQL_PASSWORD: secret
+    ports:
+      - "3306:3306"
+  app:
+    build: ./
+    depends_on:
+      - db
+    restart: always
+    ports:
+      - "8080:8080"
+    links:
+      - db
